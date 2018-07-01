@@ -1,12 +1,12 @@
 <?php
-$a = -5;
-$b = -7;
+$a = 5;
+$b = 7;
 
-if ($a >= 0 && $b >= 0) {
-    $res = $a - $b;
-    echo $res < 0 ? -$res : $res;
-} elseif ($a < 0 && $b < 0) {
+if ($a >= 0 XOR $b >= 0) {
+  echo $a + $b;
+} elseif ($a < 0) {
     echo $a * $b;
 } else {
-    echo $a + $b;
+  $res = $a - $b;
+  echo $res < 0 ? -$res : $res;
 }
