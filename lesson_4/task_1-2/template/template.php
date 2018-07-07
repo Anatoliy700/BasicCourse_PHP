@@ -43,7 +43,7 @@
 
 <form action="" method="post" enctype="multipart/form-data">
     <label>Выберите картинку для загрузки</label>
-    <input type="file" name="<?= $inputName ?>">
+    <input type="file" name="<?= $options['inputName'] ?>">
     <input type="submit">
 </form
 </body>

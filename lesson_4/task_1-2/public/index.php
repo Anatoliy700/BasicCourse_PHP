@@ -9,17 +9,19 @@ header('Content-type: text/html; charset=UTF-8');
 include __DIR__ . '/../config/constants.php';
 
 include ENGINE_DIR . 'resize.php';
-
-$inputName = 'file';//имя input для загрузки файлов
-$validSizeImage = 1500000;//максимально допустимый размер картинки
-$validFileType = ['image/jpeg', 'image/png'];//допустимый тип файла
-$imageWidth = 250;//ширина сжатой картинки
-$imageHeight = 150;//высота сжатой картинки
-$regPattern = '/^([\w,-]*)\.(\w{3,4})$/';
+$options = [
+  'inputName' => 'file',//имя input для загрузки файлов
+  'validSizeImage' => 1500000,//максимально допустимый размер картинки
+  'validFileType' => ['image/jpeg', 'image/png'],//допустимый тип файла
+  'imageWidth' => 250,//ширина сжатой картинки
+  'imageHeight' => 150,//высота сжатой картинки
+  'regPattern' => '/^([\w,-]*)\.(\w{3,4})$/'
+];
 
 //var_dump($_FILES);
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-  include ENGINE_DIR . 'addFiles.php';
+  include ENGINE_DIR . 'addImage.php';
+  addImages($_FILES, $options);
 }
 
 $arrFiles = scandir(IMG_MIN_DIR);
