@@ -21,15 +21,13 @@ $options = [
 //var_dump($_FILES);
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   include ENGINE_DIR . 'addImage.php';
-  addImages($_FILES, $options);
+ $test =  addImages($_FILES, $options);
 }
 
-$arrFiles = scandir(IMG_MIN_DIR);
+$arrFiles = array_diff(scandir(IMG_MIN_DIR), array('..', '.'));
 $arrImages = [];
 foreach ($arrFiles as $files) {
-  if ($files != '.' && $files != '..') {
-    array_push($arrImages, $files);
-  }
+  array_push($arrImages, $files);
 }
 
 include TEMPLATES_DIR . 'template.php';

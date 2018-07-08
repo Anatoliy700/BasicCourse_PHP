@@ -16,29 +16,24 @@ function addImages($files, $options) {
         //если регулярка еще не отработала
         if (!$matches) {
           
-          //если регулярка не нашла нужные данные, то удаляем файл и прерываем выполнение кода
+          //если регулярка не нашла нужные данные, то прерываем выполнение кода
           if (!preg_match($options['regPattern'], $file['name'], $matches) || count($matches) !== 3) {
-            unlink($file['tmp_name']);
             return false;
           }
         }
         $newNameImage = $matches[1] . '-' . rand(1000, 999999999) . '.' . $matches[2];
       }
-      //если перемешение прошло успешно идем дальше, иначе удаляем файл из временной папки
+      //если перемешение прошло успешно идем дальше
       if (move_uploaded_file($file['tmp_name'], IMG_MAX_DIR . $newNameImage)) {
         
         //если сжатие не прошло успешно, то удаляем и оригинал
         if (!img_resize(IMG_MAX_DIR . $newNameImage, IMG_MIN_DIR . $newNameImage, $options['imageWidth'], $options['imageHeight'])) {
           unlink(IMG_MAX_DIR . $newNameImage);
+          return false;
         }
-      } else {
-        unlink($file['tmp_name']);
+        return true;
       }
-    } else {
-      unlink($file['tmp_name']);
     }
-  } else {
-    return false;
   }
-  return true;
+  return false;
 }
