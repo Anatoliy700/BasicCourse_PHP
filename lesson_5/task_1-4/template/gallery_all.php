@@ -37,7 +37,9 @@
 <h1>Галерея</h1>
 <div>
   <?php foreach ($arrImages as $image): ?>
-      <a href="index_one.php?id=<?= $image['id'] ?>" target="_blank"><img src="<?= $image['url_min'] ?>" alt="<?=$image['name']?>"></a>
+      <a href="index.php?id=<?= $image['id'] ?>" target="_blank">
+          <img src="<?= $image['url_min'] ?>" alt="<?= $image['name'] ?>" title="<?= $image['name'] ?>">
+      </a>
   <?php endforeach; ?>
 </div>
 

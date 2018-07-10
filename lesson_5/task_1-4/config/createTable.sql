@@ -1,0 +1,8 @@
+CREATE TABLE images
+(
+    id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    name VARCHAR(128),
+    url_max VARCHAR(128) NOT NULL,
+    url_min VARCHAR(128) NOT NULL,
+    count INT DEFAULT 0 NOT NULL
+);
