@@ -1,21 +1,22 @@
 <?php
+
+function dbConnection() {
+  static $db;
+  if (!$db) {
+    $db = mysqli_connect('localhost', 'root', '', 'galery');
+  }
+  return $db;
+}
+
 /**
  * Возвращает мвссив данных запроса.
  * @param $query {string} строка запроса к базе двнных.
  * @return array|bool В случае успешного получения данных возвращает массив иначе false.
  */
 function dbQueryGetAll($query) {
-  global $db;
-  if (!$db || !mysqli_ping($db)) {
-    $db = mysqli_connect('localhost', 'root', '', 'galery');
-  }
-  $respons = mysqli_query($db, $query);
-  $out = false;
-  if ($respons) {
-    $out = mysqli_fetch_all(mysqli_query($db, $query), MYSQLI_ASSOC);
-  }
-//  mysqli_close($db);
-  return $out;
+  
+  $respons = mysqli_query(dbConnection(), $query);
+  return mysqli_fetch_all($respons, MYSQLI_ASSOC);
 }
 
 /**
@@ -24,17 +25,7 @@ function dbQueryGetAll($query) {
  * @return bool В случае успешного добавления(изменения) данных возвращает true иначе false.
  */
 function dbQuerySet($query) {
-  global $db;
-  if (!$db || !mysqli_ping($db)) {
-    $db = mysqli_connect('localhost', 'root', '', 'galery');
-  }
-  $respons = mysqli_query($db, $query);
-  $out = false;
-  if ($respons === true) {
-    $out = true;
-  }
-//  mysqli_close($db);
-  return $out;
+  return mysqli_query(dbConnection(), $query);
 }
 
 /**
@@ -43,11 +34,7 @@ function dbQuerySet($query) {
  * @return array|bool В случае успешного получения данных возвращает массив иначе false.
  */
 function dbQueryGetColumn($query) {
-  global $db;
-  if (!$db || !mysqli_ping($db)) {
-    $db = mysqli_connect('localhost', 'root', '', 'galery');
-  }
-  $respons = mysqli_query($db, $query);
+  $respons = mysqli_query(dbConnection(), $query);
   $out = false;
   if ($respons->field_count === 1) {
     $out = [];
