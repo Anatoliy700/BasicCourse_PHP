@@ -9,7 +9,11 @@
   <title>PHP_1 Shop</title>
 </head>
 <body>
-<p><a href="catalog.php">В каталог</a></p>
+<p>
+  <a href="catalog.php">В каталог</a>&nbsp;&nbsp;
+  <a href="cart.php">В корзину</a>
+</p>
+<p></p>
 <?= $content ?>
 </body>
 </html>

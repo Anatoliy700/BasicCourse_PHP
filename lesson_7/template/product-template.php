@@ -6,7 +6,7 @@
   <form action="cart.php" method="post">
     <input type="hidden" name="type" value="add">
     <input type="hidden" name="id" value="<?= $product['id'] ?>">
-    <input type="number" name="amount" placeholder="Количество" min="1" required>
+    <input type="number" name="amount" placeholder="Количество" min="1" value="1" required>
     <input type="submit" value="Добавить в корзину">
   </form>
 </div>
