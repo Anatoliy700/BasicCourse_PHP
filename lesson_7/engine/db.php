@@ -15,11 +15,17 @@ function dbQuerySet($query) {
 
 function dbQueryGetAll($query) {
   $respons = dbQuerySet($query);
-  return mysqli_fetch_all($respons, MYSQLI_ASSOC);
+  if ($respons) {
+    return mysqli_fetch_all($respons, MYSQLI_ASSOC);
+  }
+  return $respons;
 }
 
 function dbQueryGetOne($query) {
   $respons = dbQueryGetAll($query);
-  return $respons[0];
+  if ($respons) {
+    return $respons[0];
+  }
+  return $respons;
 }
 
