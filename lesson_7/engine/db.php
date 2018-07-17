@@ -8,8 +8,14 @@ function dbConnection() {
   return $db;
 }
 
-function dbQuerySet($query) {
-  return mysqli_query(dbConnection(), $query);
+function dbQuerySet($query, $err = false) {
+  
+  $res = mysqli_query(dbConnection(), $query);
+  
+  if ($err) {
+    $res = mysqli_errno(dbConnection());
+  }
+  return $res;
 }
 
 

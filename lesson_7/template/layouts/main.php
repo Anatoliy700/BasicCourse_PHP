@@ -10,8 +10,10 @@
 </head>
 <body>
 <p>
-  <a href="catalog.php">В каталог</a>&nbsp;&nbsp;
-  <a href="cart.php">В корзину</a>
+  <a href="catalog.php">Каталог</a>&nbsp;&nbsp;
+  <a href="cart.php">Корзина</a>&nbsp;&nbsp;
+  <a href="lk.php">Личный кабинет</a>&nbsp;&nbsp;
+  <?=$options['login']?>
 </p>
 <p></p>
 <?= $content ?>

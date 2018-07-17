@@ -6,7 +6,17 @@ include CONFIG_DIR . 'includeLinks.php';
 if ($_GET['id']) {
   $product = getProductById($_GET['id']);
   if ($product) {
-    render('product-template', ['product' => $product], 'main');
+    session_start();
+    
+    if (checkAuthUsers()) {
+      $layoutOptions['login'] = "<a href='login.php?type_auth=out'>Выход</a>";
+    } else {
+      $layoutOptions['login'] = "<a href='login.php'>Вход</a>";
+    }
+    render('product-template', ['product' => $product], [
+      'template' => 'main',
+      'options' => $layoutOptions
+    ]);
   } else {
     redirect('catalog.php');
   }

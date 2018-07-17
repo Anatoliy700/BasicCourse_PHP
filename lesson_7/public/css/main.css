@@ -1,26 +1,26 @@
-.wrap-products{
+.wrap-products {
     display: flex;
     flex-wrap: wrap;
 }
 
-.product{
+.product {
     margin: 10px;
     padding: 5px;
     border: 1px solid black;
 }
 
-.product > a{
+.product > a {
     text-decoration: none;
     color: #000;
 }
 
-.wrap-cart-products{
+.wrap-cart-products {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
 }
 
-.cart-product{
+.cart-product {
     display: flex;
     border: 1px solid black;
     padding: 5px;
@@ -29,13 +29,33 @@
 
 .cart-product > div,
 .cart-product > form,
-.cart-product > h3{
+.cart-product > h3 {
     display: flex;
     align-items: center;
     margin-right: 20px;
 }
 
-input[type=number]{
+input[type=number] {
     width: 100px;
     margin-right: 10px;
+}
+
+.wrap-reg form,
+.wrap-login_block form{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.wrap-reg form > input,
+.wrap-login_block form > input{
+    margin-bottom: 5px;
+}
+
+.wrap-reg form > input:valid {
+    outline-color: green;
+}
+
+.wrap-reg form > input:invalid {
+    outline-color: red;
 }

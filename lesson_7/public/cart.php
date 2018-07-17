@@ -45,6 +45,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_POST['type']) {
   }
 }
 
+if (checkAuthUsers()) {
+  $layoutOptions['login'] = "<a href='login.php?type_auth=out'>Выход</a>";
+} else {
+  $layoutOptions['login'] = "<a href='login.php'>Вход</a>";
+}
+
 if ($_SESSION['cart'] && count($_SESSION['cart'])) {
   $arrId = [];
   foreach ($_SESSION['cart'] as $product) {
@@ -66,11 +72,18 @@ if ($_SESSION['cart'] && count($_SESSION['cart'])) {
       }
     }
 //    var_dump($fullCartProducts);
+    
     render('cart-template', [
       'products' => $fullCartProducts,
       'totalPriceCart' => $totalPriceCart
-    ], 'main');
+    ], [
+      'template' => 'main',
+      'options' => $layoutOptions
+    ]);
   }
 } else {
-  render('cart_empty-template', [], 'main');
+  render('cart_empty-template', [], [
+    'template' => 'main',
+    'options' => $layoutOptions
+  ]);
 }

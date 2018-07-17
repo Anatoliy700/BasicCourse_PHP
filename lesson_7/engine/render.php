@@ -1,10 +1,13 @@
 <?php
 
 
-function render($template, array $options = [], $layoutTemplate = '') {
+function render($template, array $options = [], $layoutOptions = []) {
   $content = renderTemplate($template, $options);
-  if ($layoutTemplate) {
-    $content = renderTemplate("layouts/{$layoutTemplate}", ['content' => $content]);
+  if ($layoutOptions) {
+    $content = renderTemplate("layouts/{$layoutOptions['template']}", [
+      'content' => $content,
+      'options' => $layoutOptions['options']
+    ]);
   }
   echo $content;
 }
