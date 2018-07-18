@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * Возвращает сущестующее подключение к базе или создает новое
+ * @return mysqli
+ */
 function dbConnection() {
   static $db;
   if (!$db) {
@@ -8,6 +12,12 @@ function dbConnection() {
   return $db;
 }
 
+/**
+ * Делает запрос к БД и возвращает либо ответ, либо код ошибки в зависимости от второго параметра
+ * @param string $query строка запроса
+ * @param bool $err ключ, если false, то возвращает ответ от БД, true - код ошибки
+ * @return bool|int|mysqli_result
+ */
 function dbQuerySet($query, $err = false) {
   
   $res = mysqli_query(dbConnection(), $query);
@@ -19,6 +29,11 @@ function dbQuerySet($query, $err = false) {
 }
 
 
+/**
+ * Делает запрос к БД и конвертирует ответ в ассациативный массив состоящий из всей выборки из БД
+ * @param string $query строка запроса
+ * @return array|bool|int|mysqli_result|null
+ */
 function dbQueryGetAll($query) {
   $respons = dbQuerySet($query);
   if ($respons) {
@@ -27,6 +42,11 @@ function dbQueryGetAll($query) {
   return $respons;
 }
 
+/**
+ * Делает запрос к БД и конвертирует ответ в ассациативный массив состоящий из одного элемента
+ * @param string $query строка запроса
+ * @return array|bool|int|mixed|mysqli_result|null
+ */
 function dbQueryGetOne($query) {
   $respons = dbQueryGetAll($query);
   if ($respons) {

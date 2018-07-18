@@ -52,10 +52,12 @@ input[type=number] {
     margin-bottom: 5px;
 }
 
-.wrap-reg form > input:valid {
+.wrap-reg form > input:valid,
+.wrap-login_block form > input:valid{
     outline-color: green;
 }
 
-.wrap-reg form > input:invalid {
+.wrap-reg form > input:invalid,
+.wrap-login_block form > input:invalid {
     outline-color: red;
 }

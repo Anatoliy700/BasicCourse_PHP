@@ -1,7 +1,11 @@
 <?php
 require_once ENGINE_DIR . 'db.php';
 
-
+/**
+ * Возвращает данные пользавателя из БД по его ID
+ * @param int $userId ID пользователя
+ * @return array|bool|int|mixed|mysqli_result|null
+ */
 function getUserById($userId) {
   $id = (int)$userId;
   if ($id) {
@@ -18,6 +22,13 @@ function getUserById($userId) {
   }
 }*/
 
+/**
+ * Добавляет нового пользователя в БД и возвращает код ошибки или 0 если успешно
+ * @param string $login login нового пользователя
+ * @param string $name имя нового пользователя
+ * @param string $pass пароль нового пользователя
+ * @return bool|int|mysqli_result
+ */
 function addNewUser($login, $name, $pass) {
   $loginValid = mysqli_real_escape_string(dbConnection(), trim($login));
   $nameValid = mysqli_real_escape_string(dbConnection(), trim($name));
@@ -28,7 +39,10 @@ function addNewUser($login, $name, $pass) {
   return $res;
 }
 
-
+/**
+ * Проверяет авторизован ли пользователь
+ * @return bool
+ */
 function checkAuthUsers() {
   if ($_SESSION['user_id'] && $_SESSION['auth']) {
     return $_SESSION['auth'];
@@ -36,6 +50,13 @@ function checkAuthUsers() {
   return false;
 }
 
+/**
+ * Произвдить аутентификацию пользователя
+ * @param string $login login пользователя
+ * @param string $pass пароль пользователя
+ * @return int возвращает -1 если пользователь с таки login не найден, 0 если найден но парольне верный,
+ * ID пользователя если аутентификация прошла успешно
+ */
 function authenticationUser($login, $pass) {
   $isAuth = -1;
   $loginValid = mysqli_real_escape_string(dbConnection(), trim($login));
