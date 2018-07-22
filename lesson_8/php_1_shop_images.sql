@@ -1,0 +1,10 @@
+INSERT INTO php_1_shop.images (name, path, product_id) VALUES ('Продукт 1', 'product_1.jpg', 1);
+INSERT INTO php_1_shop.images (name, path, product_id) VALUES ('Продукт 2', 'product_2.jpg', 2);
+INSERT INTO php_1_shop.images (name, path, product_id) VALUES ('Продукт 3', 'product_3.jpg', 3);
+INSERT INTO php_1_shop.images (name, path, product_id) VALUES ('Продукт 4', 'product_4.jpg', 4);
+INSERT INTO php_1_shop.images (name, path, product_id) VALUES ('Продукт 5', 'product_5.jpg', 5);
+INSERT INTO php_1_shop.images (name, path, product_id) VALUES ('Продукт 6', 'product_6.jpg', 6);
+INSERT INTO php_1_shop.images (name, path, product_id) VALUES ('Продукт 7', 'product_7.jpg', 7);
+INSERT INTO php_1_shop.images (name, path, product_id) VALUES ('Продукт 8', 'product_8.jpg', 8);
+INSERT INTO php_1_shop.images (name, path, product_id) VALUES ('Продукт 9', 'product_9.jpg', 9);
+INSERT INTO php_1_shop.images (name, path, product_id) VALUES ('Продукт 10', 'product_10.jpg', 10);

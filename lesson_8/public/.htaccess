@@ -1,0 +1,9 @@
+RewriteEngine On
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+#RewriteCond %{REQUEST_URI} !.*\.(ico|gif|jpg|jpeg|png|js|css)
+RewriteRule . index.php
+
+#RewriteCond %{REQUEST_URI} .*\.(ico|gif|jpg|jpeg|png|js|css)
+#RewriteRule (admin)/(.*) http://lesson8/$2? [R=301,L]
